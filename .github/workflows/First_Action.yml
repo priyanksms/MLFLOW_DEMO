@@ -1,10 +1,10 @@
 name: First Action
-on: workflow_dispatch
+on: push
 jobs:
   first-job:
     runs-on: ubuntu-latest
     steps:
       - name: Print greeting
         run: echo " Hello World "
-      - name: Print Goodbye
-        run: echo " Good bye"
+      - name: Install requirements.txt
+        run: python -r requirements.txt
