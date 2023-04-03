@@ -22,5 +22,5 @@ jobs:
           path: temp
 
 
-      - run: python CalculatePower.py
-      - run: mlflow ui
+ ##     - run: python CalculatePower.py
+ ##     - run: mlflow ui
