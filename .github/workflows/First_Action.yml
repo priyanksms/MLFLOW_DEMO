@@ -7,6 +7,7 @@ jobs:
       - name: Print greeting
         run: echo " Hello World "
       - uses: actions/checkout@v3
+      - name: Installing Python
       - uses: actions/setup-python@v4
         with:
           python-version: '3.7'
