@@ -7,13 +7,17 @@ jobs:
       - name: Print greeting
         run: echo " Hello World "
       - uses: actions/checkout@v3
-      - name: Installing Python
-        uses: actions/setup-python@v4
+      - uses: actions/setup-python@v4
         with:
           python-version: '3.7'
       - name: Install requirements.txt
         run: pip install -r requirements.txt
 
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: artifiles
+          path: dist
 
 
       - run: python CalculatePower.py
