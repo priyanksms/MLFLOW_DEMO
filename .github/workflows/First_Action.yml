@@ -12,7 +12,6 @@ jobs:
           python-version: '3.7'
       - name: Install requirements.txt
         run: pip install -r requirements.txt
-      - name: Upload Artifacts
 
       - run: python CalculatePower.py
       - run: mlflow ui
