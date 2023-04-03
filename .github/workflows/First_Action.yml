@@ -14,7 +14,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Upload Artifacts
-        uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v3
         with:
           name: artifiles
           path: dist
