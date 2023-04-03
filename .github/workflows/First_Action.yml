@@ -12,8 +12,8 @@ jobs:
           python-version: '3.7'
 
       - uses: actions/cache@v2
-          with:
-            path: ~/.cache/pip
+        with:
+          path: ~/.cache/pip
 
       - name: Install requirements.txt
         run: pip install -r requirements.txt
