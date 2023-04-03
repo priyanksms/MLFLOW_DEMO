@@ -13,8 +13,6 @@ jobs:
       - name: Install requirements.txt
         run: pip install -r requirements.txt
       - name: Upload Artifacts
-      - uses: actions/upload-artifact@v3
-        with:
-          name: artifiles
+
       - run: python CalculatePower.py
       - run: mlflow ui
