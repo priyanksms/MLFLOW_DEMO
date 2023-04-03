@@ -19,7 +19,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: artifiles
-          path: mlruns
+          path: temp
 
 
       - run: python CalculatePower.py
