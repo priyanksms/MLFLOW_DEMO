@@ -13,11 +13,13 @@ jobs:
       - name: Install requirements.txt
         run: pip install -r requirements.txt
 
+## Each step is marked by hyphen " - " ... you add hyphen and that thing will become step
 
-      - uses: actions/upload-artifact@v3
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v3
         with:
           name: artifiles
-          path: dist
+          path: mlruns
 
 
       - run: python CalculatePower.py
