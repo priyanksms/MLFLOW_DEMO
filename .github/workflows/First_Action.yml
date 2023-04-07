@@ -1,0 +1,47 @@
+name: First Action
+on: push
+jobs:
+  first-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print greeting
+        run: echo " Hello World "
+
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.7'
+
+      - name: cache virtualenv
+        uses: actions/cache@v3
+        id: cache-env
+        with:
+          path: env
+          key: ${{ runner.os }}-${{ steps.setup_python.outputs.python-version }}-env-${{ hashFiles('requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-${{ steps.setup_python.outputs.python-version }}-env-
+
+
+      - name: Running main.py
+        run: python main.py
+
+
+      - name: Install requirements.txt
+        run: |
+          python -m env ./.env
+          source ./.env/bin/activate
+          python -m pip install -r requirements.txt
+          if: steps.cache-env.outputs.cache-hit != 'true'
+
+## Each step is marked by hyphen " - " ... you add hyphen and that thing will become step
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: artifiles
+          path: temp
+
+
+ ##     - run: python CalculatePower.py
+ ##     - run: mlflow ui
