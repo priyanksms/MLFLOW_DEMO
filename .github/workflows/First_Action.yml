@@ -27,12 +27,16 @@ jobs:
         run: python main.py
 
 
-      - name: Install requirements.txt
+      - name: Creating Install requirements.txt
         run: |
           python -m venv ./.venv
           source ./.venv/bin/activate
           python -m pip install -r requirements.txt
 
+      - name: Running Calculate power and MLFLOW UI
+        run: |
+          python CalculatePower.py
+          mlflow ui
 
 ## Each step is marked by hyphen " - " ... you add hyphen and that thing will become step
 
