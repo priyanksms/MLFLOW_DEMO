@@ -1,3 +1,8 @@
+<<<<<<< HEAD
 mlruns/
 env/
 venv/
+=======
+env/
+mlruns/
+>>>>>>> 1206b3ac0936d2fd09cd791444eb0f7df6c84162
