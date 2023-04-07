@@ -12,19 +12,27 @@ jobs:
       - uses: actions/setup-python@v4
         with:
           python-version: '3.7'
-      - run: ls /.cache
 
-      - name: Runing main.py
+      - name: cache virtualenv
+        uses: actions/cache@v3
+        id: cache-env
+        with:
+          path: ./.env/
+          key: ${{ runner.os }}-${{ steps.setup_python.outputs.python-version }}-env-${{ hashFiles('requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-${{ steps.setup_python.outputs.python-version }}-env-
+
+
+      - name: Running main.py
         run: python main.py
 
-      - name: Caching Dependencies
-        uses: actions/cache@v2
-        with:
-          path: ~/.cache/pip
-          key: ${{ hashFiles('setup.py') }}-${{ hashFiles('requirements.txt') }}
 
       - name: Install requirements.txt
-        run: pip install -r requirements.txt
+        run: |
+          python -m env ./.env
+          source ./.env/bin/activate
+          python -m pip install -r requirements.txt
+          if: steps.cache-env.outputs.cache-hit != 'true'
 
 ## Each step is marked by hyphen " - " ... you add hyphen and that thing will become step
 
