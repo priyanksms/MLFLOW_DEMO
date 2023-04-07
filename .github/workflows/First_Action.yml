@@ -29,12 +29,12 @@ jobs:
 
       - name: Creating Install requirements.txt
         run: |
-## To create VENV, then activating
+
           python -m venv  venv
           . venv/bin/activate
-##
+
           pip install --upgrade pip pip-tools
-          pip-sync  requirements.txt
+          pip install -r  requirements.txt
 
       - name: Running Calculate power
         run: python CalculatePower.py
