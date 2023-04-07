@@ -9,6 +9,12 @@
       <sourceFolder url="file://$MODULE_DIR$/env/Lib/site-packages/pythonwin" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/env/Lib/site-packages/win32" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/env/Lib/site-packages/win32/lib" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/venv/DLLs" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/venv/Lib" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/venv/Lib/site-packages" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/venv/Lib/site-packages/pythonwin" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/venv/Lib/site-packages/win32" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/venv/Lib/site-packages/win32/lib" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
