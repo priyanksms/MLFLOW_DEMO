@@ -37,7 +37,7 @@ mlflow==1.30.0
 nlp-primitives==2.1.0
 nltk==3.6.5
 numba==0.53.0
-numpy==1.23.5
+numpy==1.21.0
 oauthlib==3.2.2
 packaging==21.3
 pandas==1.3.5
