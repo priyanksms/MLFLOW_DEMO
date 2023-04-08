@@ -71,7 +71,9 @@ jobs:
           key: ${{ runner.os }}-venv-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/*requirements.txt') }}
 
       - name: Activate VENV environment
-        run: venv/bin/activate
+        run: |
+          venv/bin/activate
+          pip list -v
 
       - name: Running Calculate power
         run: python CalculatePower.py
