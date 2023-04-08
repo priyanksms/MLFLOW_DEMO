@@ -16,15 +16,20 @@ jobs:
       - name: Running main.py
         run: python main.py
 
+      - name: cache VENV
+        uses: actions/cache@v3
+        id: cache
+        with:
+          path: venv
+          key: requirements-${{ hashFiles('**/*requirements.txt') }}
 
       - name: Activate VENV environment
         run: |
           python -m venv  venv
-          venv/bin/activate
+          source venv/bin/activate
 
 
       - name: Install requirements.txt Dependencies
-
         run: |
           pip install -r requirements.txt
 
