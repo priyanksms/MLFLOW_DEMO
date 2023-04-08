@@ -20,7 +20,7 @@ jobs:
         uses: actions/cache@v3
         id: cache
         with:
-          path: venv
+          path: /opt/hostedtoolcache/Python/3.7.16/x64/lib/python3.7/site-packages/*
           key: requirements-${{ hashFiles('**/*requirements.txt') }}
 
       - name: Activate VENV environment
@@ -33,6 +33,7 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: |
           pip install -r requirements.txt
+
 
 
       - run: pip list -v
@@ -69,7 +70,7 @@ jobs:
       - name: cache VENV
         uses: actions/cache@v3
         with:
-          path: venv
+          path: /opt/hostedtoolcache/Python/3.7.16/x64/lib/python3.7/site-packages/*
           key: requirements-${{ hashFiles('**/*requirements.txt') }}
 
       - name: Activate VENV environment in second-job
