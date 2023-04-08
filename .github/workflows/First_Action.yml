@@ -22,13 +22,14 @@ jobs:
           path: venv
           key: ${{ runner.os }}-venv-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/*requirements.txt') }}
 
-
-      - name: Creating Install requirements.txt
-        if: steps.cache-primes.outputs.cache-hit != 'true'
+      - name: Activate VENV environment
         run: |
-
           python -m venv  venv
           venv/bin/activate
+
+
+      - name: Install requirements.txt Dependencies
+        run: |
           pip install --upgrade pip
           pip install -r requirements.txt
 
@@ -71,9 +72,12 @@ jobs:
           key: ${{ runner.os }}-venv-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/*requirements.txt') }}
 
       - name: Activate VENV environment
+          run: |
+            python -m venv  venv
+            venv/bin/activate
+
+      - name: Install requirements.txt Dependencies
         run: |
-          ls -lrta
-          venv/bin/activate
           pip install --upgrade pip
           pip install -r requirements.txt
           pip list -v
