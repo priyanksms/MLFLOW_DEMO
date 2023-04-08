@@ -72,8 +72,10 @@ jobs:
 
       - name: Activate VENV environment
         run: |
+          ls -lrta
           venv/bin/activate
           pip list -v
+
 
       - name: Running Calculate power
         run: python CalculatePower.py
