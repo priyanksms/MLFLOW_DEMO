@@ -52,6 +52,7 @@ jobs:
 
 
   second-job:
+    needs: [first-job]
     runs-on: ubuntu-latest
     steps:
       - name: Print greeting
