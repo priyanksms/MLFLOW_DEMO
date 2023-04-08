@@ -20,7 +20,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: venv
-          key: ${{ runner.os }}-venv-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/*requirements.txt') }}
+          key: requirements-${{ hashFiles('**/*requirements.txt') }}
 
       - name: Activate VENV environment
         run: |
@@ -30,7 +30,6 @@ jobs:
 
       - name: Install requirements.txt Dependencies
         run: |
-          pip install --upgrade pip
           pip install -r requirements.txt
 
 
@@ -69,7 +68,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: venv
-          key: ${{ runner.os }}-venv-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/*requirements.txt') }}
+          key: requirements-${{ hashFiles('**/*requirements.txt') }}
 
       - name: Activate VENV environment
         run: |
@@ -78,9 +77,8 @@ jobs:
 
       - name: Install requirements.txt Dependencies
         run: |
-          pip install --upgrade pip
           pip install -r requirements.txt
-          pip list -v
+
 
 
       - name: Running Calculate power
