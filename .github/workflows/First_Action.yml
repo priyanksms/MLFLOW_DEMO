@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Print greeting
-        run: echo " Hello World "
+        run: echo " In First Job "
 
       - uses: actions/checkout@v3
 
@@ -49,3 +49,29 @@ jobs:
 
  ##     - run: python CalculatePower.py
  ##     - run: mlflow ui
+
+
+  second-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print greeting
+        run: echo " In Second Job"
+
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.7'
+
+      - name: cache VENV
+        uses: actions/cache@v3
+        with:
+          path: venv
+          key: ${{ runner.os }}-venv-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/*requirements.txt') }}
+
+      - name: Activate VENV environment
+        run: venv/bin/activate
+
+      - name: Running Calculate power
+        run: python CalculatePower.py
+
