@@ -64,7 +64,7 @@ jobs:
         with:
           python-version: '3.7'
 
-      - name: cache VENV in second-job
+      - name: cache VENV
         uses: actions/cache@v3
         with:
           path: venv
