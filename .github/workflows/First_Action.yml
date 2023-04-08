@@ -64,13 +64,13 @@ jobs:
         with:
           python-version: '3.7'
 
-      - name: cache VENV
+      - name: cache VENV in second-job
         uses: actions/cache@v3
         with:
           path: venv
           key: requirements-${{ hashFiles('**/*requirements.txt') }}
 
-      - name: Activate VENV environment
+      - name: Activate VENV environment in second-job
         run: |
           python -m venv  venv
           venv/bin/activate
