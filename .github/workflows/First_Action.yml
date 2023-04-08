@@ -72,9 +72,9 @@ jobs:
           key: ${{ runner.os }}-venv-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/*requirements.txt') }}
 
       - name: Activate VENV environment
-          run: |
-            python -m venv  venv
-            venv/bin/activate
+        run: |
+          python -m venv  venv
+          venv/bin/activate
 
       - name: Install requirements.txt Dependencies
         run: |
