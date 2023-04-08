@@ -24,6 +24,7 @@ jobs:
 
 
       - name: Creating Install requirements.txt
+        if: steps.cache-primes.outputs.cache-hit != 'true'
         run: |
 
           python -m venv  venv
