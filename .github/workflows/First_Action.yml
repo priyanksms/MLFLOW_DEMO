@@ -34,11 +34,11 @@ jobs:
           pip install -r requirements.txt
 
       - name: Checking env.pythonLocation value
-      - run: |
+        run: |
           echo ${{ env.pythonLocation }}
 
       - name: Checking PIP LIST
-      - run:  pip list -v
+        run:  pip list -v
 
       - name: Running Calculate power
         run: python CalculatePower.py
