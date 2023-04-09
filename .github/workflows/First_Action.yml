@@ -36,7 +36,7 @@ jobs:
 
 
       - run: |
-          echo env.pythonlocation
+          echo anython
           pip list -v
       - name: Running Calculate power
         run: python CalculatePower.py
