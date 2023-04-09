@@ -30,6 +30,7 @@ jobs:
 
 
       - run: |
+          echo ${{ env.pythonLocation }}
           pip list -v
       - name: Running Calculate power
         run: python CalculatePower.py
