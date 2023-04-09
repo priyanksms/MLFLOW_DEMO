@@ -62,11 +62,11 @@ jobs:
           python-version: '3.7'
 
       - name: cache VENV
-          uses: actions/cache@v3
-          id: cache
-          with:
-            path: ${{ env.pythonLocation }}
-            key: ${{ env.pythonLocation }}-${{ hashFiles('**/*requirements.txt') }}
+        uses: actions/cache@v3
+        id: cache
+        with:
+          path: ${{ env.pythonLocation }}
+          key: ${{ env.pythonLocation }}-${{ hashFiles('**/*requirements.txt') }}
 
       - name: Install requirements.txt Dependencies
         run: |
