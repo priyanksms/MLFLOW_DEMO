@@ -20,14 +20,8 @@ jobs:
         uses: actions/cache@v3
         id: cache
         with:
-          path: venv
-          key: requirements-${{ hashFiles('**/*requirements.txt') }}
-
-      - name: Activate VENV environment
-        run: |
-          python -m venv  venv
-          source venv/bin/activate
-
+          path: ${{ env.pythonLocation }}
+          key: ${{ env.pythonLocation }}-${{ hashFiles('**/*requirements.txt') }}
 
       - name: Install requirements.txt Dependencies
         run: |
@@ -36,7 +30,6 @@ jobs:
 
 
       - run: |
-          echo anython
           pip list -v
       - name: Running Calculate power
         run: python CalculatePower.py
@@ -69,14 +62,11 @@ jobs:
           python-version: '3.7'
 
       - name: cache VENV
-        uses: actions/cache@v3
-        with:
-          path: /opt/hostedtoolcache/Python/3.7.16/x64/lib/python3.7/site-packages/*
-          key: requirements-${{ hashFiles('**/*requirements.txt') }}
-
-      - name: Activate VENV environment in second-job
-        run: |
-          venv/bin/activate
+          uses: actions/cache@v3
+          id: cache
+          with:
+            path: ${{ env.pythonLocation }}
+            key: ${{ env.pythonLocation }}-${{ hashFiles('**/*requirements.txt') }}
 
       - name: Install requirements.txt Dependencies
         run: |
