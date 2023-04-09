@@ -1,3 +1,6 @@
+
+## Each step is marked by hyphen " - " ... you add hyphen and that thing will become step
+
 name: First Action
 on: push
 jobs:
@@ -16,7 +19,10 @@ jobs:
       - name: Running main.py
         run: python main.py
 
-      - name: cache VENV
+## There is no point in Caching VENV ... because when pip install -r requirements.txt will always install at env.pythonLocation and it will not install in VENV
+## Therefore it make sense to always cache env.pythonLocation
+
+      - name: Caching Dependencies
         uses: actions/cache@v3
         id: cache
         with:
@@ -27,8 +33,6 @@ jobs:
         run: |
           pip install -r requirements.txt
 
-
-
       - run: |
           echo ${{ env.pythonLocation }}
           pip list -v
@@ -36,7 +40,6 @@ jobs:
         run: python CalculatePower.py
 
 
-## Each step is marked by hyphen " - " ... you add hyphen and that thing will become step
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v3
@@ -48,6 +51,8 @@ jobs:
  ##     - run: python CalculatePower.py
  ##     - run: mlflow ui
 
+
+## --------------------- Starting Second Job ----------------------------------------------------
 
   second-job:
     needs: [first-job]
@@ -62,7 +67,7 @@ jobs:
         with:
           python-version: '3.7'
 
-      - name: cache VENV
+      - name: Reusing Previously Cached Dependencies
         uses: actions/cache@v3
         id: cache
         with:
@@ -72,8 +77,6 @@ jobs:
       - name: Install requirements.txt Dependencies
         run: |
           pip install -r requirements.txt
-
-
 
       - name: Running Calculate power
         run: python CalculatePower.py
